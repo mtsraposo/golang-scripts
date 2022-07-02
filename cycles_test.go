@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -16,17 +15,11 @@ func TestCycles(t *testing.T) {
 		{[]int{5, 3, 1, 2, 4}, [][]int{{1, 3, 2, 4, 5}}},
 	}
 
-	for _,test := range tests {
+	for _, test := range tests {
 		cycles := permutationCycles(test.set)
-		err := fmt.Errorf("failed to identify permutation cycles in %v. %v does not equal %v",
-			test.set, cycles, test.cycles)
-		if len(cycles) != len(test.cycles) {
-			t.Error(err)
-		}
-		for i, cycle := range cycles {
-			if !arraysEqual(cycle, test.cycles[i]) {
-				t.Error(err)
-			}
+		if !matricesEqual(cycles, test.cycles) {
+			t.Errorf("failed to identify permutation cycles in %v. %v does not equal %v",
+				test.set, cycles, test.cycles)
 		}
 	}
 }
