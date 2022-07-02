@@ -5,7 +5,7 @@ import (
 )
 
 func TestRotate(t *testing.T) {
-	tables := []struct {
+	tests := []struct {
 		L []int
 		k int
 		R []int
@@ -18,10 +18,10 @@ func TestRotate(t *testing.T) {
 		{[]int{1, 2, 3, 4, 5}, -6, []int{5, 1, 2, 3, 4}},
 	}
 
-	for _, table := range tables {
-		rotated := rotate(table.L, table.k)
-		if !arraysEqual(rotated, table.R) {
-			t.Errorf("Rotation of (%v, %d) failed. %v does not equal %v.", table.L, table.k, rotated, table.R)
+	for _, test := range tests {
+		rotated := rotate(test.L, test.k)
+		if !arraysEqual(rotated, test.R) {
+			t.Errorf("Rotation of (%v, %d) failed. %v does not equal %v.", test.L, test.k, rotated, test.R)
 		}
 	}
 }
