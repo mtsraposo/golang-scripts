@@ -2,8 +2,8 @@
 
 ## Programming
 - [X] List rotations
-- [ ] Trailing MaxMin
-- [ ] Permutation cycles
+- [X] Trailing MaxMin
+- [X] Permutation cycles
 - [ ] Interval union
 - [ ] Trade summary
 
