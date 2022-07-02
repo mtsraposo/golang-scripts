@@ -1,7 +1,7 @@
 # XP Strats
 
 ## Programming
-- [ ] List rotations
+- [X] List rotations
 - [ ] Trailing MaxMin
 - [ ] Permutation cycles
 - [ ] Interval union
