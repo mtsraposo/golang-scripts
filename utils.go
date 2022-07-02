@@ -1,6 +1,6 @@
 package main
 
-func arraysEqual[V int | float32](A []V, B []V) bool {
+func arraysEqual[V int | float64](A []V, B []V) bool {
 	if len(A) != len(B) {
 		return false
 	}
@@ -14,7 +14,7 @@ func arraysEqual[V int | float32](A []V, B []V) bool {
 	return true
 }
 
-func matricesEqual[V int | float32](A [][]V, B [][]V) bool{
+func matricesEqual[V int | float64](A [][]V, B [][]V) bool{
 	if len(A) != len(B) {
 		return false
 	}
@@ -24,4 +24,18 @@ func matricesEqual[V int | float32](A [][]V, B [][]V) bool{
 		}
 	}
 	return true
+}
+
+func min(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
