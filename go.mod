@@ -1,3 +1,3 @@
-module github.com/xp-strats
+module github.com/mtsraposo/xp-strats
 
 go 1.18

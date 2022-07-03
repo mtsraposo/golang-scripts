@@ -7,7 +7,7 @@ import (
 const LEFT = 0
 const RIGHT = 1
 
-func union(intervals [][]float64) [][]float64 {
+func Union(intervals [][]float64) [][]float64 {
 	return mergeSort(intervals, 0, len(intervals))
 }
 

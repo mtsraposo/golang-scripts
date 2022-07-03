@@ -1,6 +1,7 @@
 package tests
 
 import (
+	. "github.com/mtsraposo/xp-strats/scripts"
 	"testing"
 )
 

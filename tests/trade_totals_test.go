@@ -1,6 +1,7 @@
 package tests
 
 import (
+	. "github.com/mtsraposo/xp-strats/scripts"
 	"testing"
 	"time"
 )
@@ -19,7 +20,7 @@ func TestTradeTotals(t *testing.T) {
 			[]Net{{refDate, 0}, {refDate.Add(day), -1}}},
 	}
 	for _, test := range tests {
-		net := tradeSummary(test.trades)
+		net := TradeSummary(test.trades)
 		if !totalsAreEqual(net, test.net) {
 			t.Errorf("Failed to calculate net trade amounts for trades %v. %v does not equal %v",
 				test.trades, net, test.net)

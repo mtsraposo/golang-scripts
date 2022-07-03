@@ -1,8 +1,8 @@
 package tests
 
 import (
+	. "github.com/mtsraposo/xp-strats/scripts"
 	"testing"
-	"github.com/xp-strats/scripts"
 )
 
 func TestCycles(t *testing.T) {
@@ -18,7 +18,7 @@ func TestCycles(t *testing.T) {
 
 	for _, test := range tests {
 		cycles := PermutationCycles(test.set)
-		if !matricesEqual(cycles, test.cycles) {
+		if !MatricesEqual(cycles, test.cycles) {
 			t.Errorf("failed to identify permutation cycles in %v. %v does not equal %v",
 				test.set, cycles, test.cycles)
 		}

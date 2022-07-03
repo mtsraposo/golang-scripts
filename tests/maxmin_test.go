@@ -1,8 +1,8 @@
 package tests
 
 import (
+	. "github.com/mtsraposo/xp-strats/scripts"
 	"testing"
-	"github.com/xp-strats/scripts"
 )
 
 func TestMaxMinBreaches(t *testing.T) {
