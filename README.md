@@ -5,9 +5,9 @@
 - [X] Trailing MaxMin
 - [X] Permutation cycles
 - [X] Interval union
-- [ ] Trades
-  - [ ] Net
-  - [ ] Amounts
+- [X] Trades
+  - [X] Totals
+  - [X] Positions
 
 ## Mathematics
 
