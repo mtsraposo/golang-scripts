@@ -12,12 +12,12 @@
 ## Mathematics
 
 ### Logic
-- [ ] Price per kg
-- [ ] Soccer championship
-  - [ ] Number of matches per team
-  - [ ] Total number of matches
-  - [ ] Min score to become champion
-  - [ ] Max score to be downgraded
+- [X] Price per kg
+- [X] Soccer championship
+  - [X] Number of matches per team
+  - [X] Total number of matches
+  - [X] Min score to become champion
+  - [X] Max score to be downgraded
 
 ### Probability
 - [ ] Two dice

@@ -18,12 +18,12 @@ type DatePosition struct {
 }
 
 func TradePositions(trades []Trade, date time.Time) []Position {
-	dateToPosition := groupByInstrument(trades)
-	positions := mapToArray(dateToPosition)
+	dateToPositions := groupByInstrument(trades)
+	positions := mapToArray(dateToPositions)
 	sortByDate(positions)
-	dateToPosition = accumulate(positions)
-	positionOnDate := getByDate(dateToPosition, date)
-	return mapPositionsToArray(positionOnDate)
+	dateToPositions = accumulate(positions)
+	positionsOnDate := getByDate(dateToPositions, date)
+	return mapPositionsToArray(positionsOnDate)
 }
 
 func groupByInstrument(trades []Trade) DateToPosition {
