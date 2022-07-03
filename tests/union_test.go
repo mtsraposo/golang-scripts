@@ -1,4 +1,4 @@
-package main
+package tests
 
 import "testing"
 
@@ -13,8 +13,8 @@ func TestUnion(t *testing.T) {
 			[][]float64{{1,6}}},
 	}
 	for _, test := range tests {
-		union := union(test.intervals)
-		if !matricesEqual(union, test.union) {
+		union := Union(test.intervals)
+		if !MatricesEqual(union, test.union) {
 			t.Errorf("Failed to mergeSort intervals %v. %v does not equal %v", test.intervals, union, test.union)
 		}
 	}

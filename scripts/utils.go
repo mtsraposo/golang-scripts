@@ -1,6 +1,6 @@
-package main
+package scripts
 
-func arraysEqual[V int | float64](A []V, B []V) bool {
+func ArraysEqual[V int | float64](A []V, B []V) bool {
 	if len(A) != len(B) {
 		return false
 	}
@@ -14,12 +14,12 @@ func arraysEqual[V int | float64](A []V, B []V) bool {
 	return true
 }
 
-func matricesEqual[V int | float64](A [][]V, B [][]V) bool{
+func MatricesEqual[V int | float64](A [][]V, B [][]V) bool {
 	if len(A) != len(B) {
 		return false
 	}
 	for i, row := range B {
-		if !arraysEqual(row, A[i]) {
+		if !ArraysEqual(row, A[i]) {
 			return false
 		}
 	}

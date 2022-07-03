@@ -1,4 +1,4 @@
-package main
+package tests
 
 import (
 	"testing"
@@ -19,8 +19,8 @@ func TestRotate(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		rotated := rotate(test.L, test.k)
-		if !arraysEqual(rotated, test.R) {
+		rotated := Rotate(test.L, test.k)
+		if !ArraysEqual(rotated, test.R) {
 			t.Errorf("Rotation of (%v, %d) failed. %v does not equal %v.", test.L, test.k, rotated, test.R)
 		}
 	}

@@ -4,8 +4,10 @@
 - [X] List rotations
 - [X] Trailing MaxMin
 - [X] Permutation cycles
-- [ ] Interval union
-- [ ] Trade summary
+- [X] Interval union
+- [ ] Trades
+  - [ ] Net
+  - [ ] Amounts
 
 ## Mathematics
 

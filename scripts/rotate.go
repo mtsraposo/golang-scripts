@@ -1,6 +1,6 @@
-package main
+package scripts
 
-func rotate(L []int, k int) []int {
+func Rotate(L []int, k int) []int {
 	n := len(L)
 	pivotPosition := _calcPivotPosition(k, n)
 	if pivotPosition != 0 {

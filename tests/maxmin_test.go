@@ -1,7 +1,8 @@
-package main
+package tests
 
 import (
 	"testing"
+	"github.com/xp-strats/scripts"
 )
 
 func TestMaxMinBreaches(t *testing.T) {
@@ -15,7 +16,7 @@ func TestMaxMinBreaches(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		maxMinBreaches := calcMaxMinBreaches(test.prices)
+		maxMinBreaches := CalcMaxMinBreaches(test.prices)
 		if maxMinBreaches[0] != test.maxMinBreaches[0] || maxMinBreaches[1] != test.maxMinBreaches[1] {
 			t.Errorf("failed to calculate maxMinBreaches for prices %v. %v did not equal %v",
 				test.prices, maxMinBreaches, test.maxMinBreaches)

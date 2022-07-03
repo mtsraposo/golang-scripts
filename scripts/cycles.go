@@ -1,6 +1,6 @@
-package main
+package scripts
 
-func permutationCycles(set []int) [][]int {
+func PermutationCycles(set []int) [][]int {
 	positionMap := genPositionMap(set)
 	visited := make(map[int]struct{})
 
@@ -26,7 +26,7 @@ func permutationCycles(set []int) [][]int {
 			for nextPosition, visitNext := willVisitNext(pos); visitNext; nextPosition, visitNext = willVisitNext(pos) {
 				pos = visit(nextPosition)
 			}
-			cycles = append(cycles, rotate(newCycle, -1))
+			cycles = append(cycles, Rotate(newCycle, -1))
 			newCycle = []int{}
 		}
 	}

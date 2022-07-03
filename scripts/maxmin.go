@@ -1,6 +1,6 @@
-package main
+package scripts
 
-func calcMaxMinBreaches(prices []float64) [2]int {
+func CalcMaxMinBreaches(prices []float64) [2]int {
 	max, min := prices[0], prices[0]
 	maxBreaches, minBreaches := 0, 0
 	for _, price := range prices {
