@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	. "github.com/mtsraposo/xp-strats/mathematics"
+	. "github.com/mtsraposo/xp-strats/maths"
 )
 
 func main() {
-	fmt.Printf("P(last ball removed is blue) = %f%%\n", ProbLastRemovedIsBlue(54, 18))
+	fmt.Printf("\n\n ##### Probabilities ##### \n\n")
+	RunTennis(0.7)
+	RunBallot(54, 18)
 }
