@@ -2,6 +2,7 @@
 
 FROM golang:1.18 AS build
 
+ARG test_dir
 WORKDIR /app
 
 COPY go.sum go.mod ./
@@ -9,4 +10,13 @@ RUN go install -v ./...
 
 COPY . ./
 
-CMD ["go", "test", "-v", "./tests"]
+RUN go test -c -v ./tests/$test_dir -o /pkg.test
+
+##
+## Deploy
+##
+FROM gcr.io/distroless/base-debian10
+WORKDIR /
+COPY --from=build /pkg.test /pkg.test
+
+CMD ["/pkg.test", "-test.v"]

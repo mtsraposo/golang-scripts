@@ -1,3 +1,32 @@
+# Logic
+
+### 1. Price per kg
+    price_t = 0.8 * price_sjc
+    price_sp = 1.2 * price_sjc
+    price_t = 6
+    => price_sp = 1.2 * price_t / 0.8 = 9.0
+
+### 2. Soccer championship
+#### a. Number of matches per team
+    Each team plays the remaining 19 twice (one at home and one as a visitor), 
+    so 38 matches are played by each team  
+#### b. Total number of matches
+    Two matches between every team, so the total number of matches equals: 
+    2 * C(20, 2) = 2 * 20! / [(20-2)!2!) = 20 * 19 = 380
+#### c. Min score to become champion
+    If the result of all matches is a draw, one of the teams will be picked randomly 
+    and win with 38 points (1 point per match played).
+#### d. Max score to be downgraded
+    Let the group of the first 17 teams be called G1, and the group of the last 3 teams be called G2.
+    The last team in G1 and all of G2 will be downgraded.
+    If, at every home-visitor pair of matches within G1, 
+    each team wins only once, either as a visitor or as a host,
+    all teams in G1 will have 3 * 16 = 48 points. If, in addition, each team in G1 always beats a team in G2,
+    all teams in G1 will have a total of 48 (within G1) + 2 * 3 * 3 (G1 x G2) = 66 points.
+    G2 teams will have between 0 and 2 * 2 * 3 = 12 points, depending on the outcomes of the matches within G2.
+    The last team in G1 will be classified as 17th in the championship, according to any of the resolution criteria,
+    and will therefore be downgraded with **66 points**.
+
 # Probability
 
 ### 3. Dice
@@ -18,18 +47,17 @@
     From the binomial distribution: P(k,n,p) = C(n,k) * p^k * (1-p)^(n-k)
     So: P(deuce) = C(6,3) * p^3 * (1-p)^3 = 20 * p^3 * (1-p)^3.
 #### b. P(first to deliver wins)
-    [...] could be the first of the second ...
     For the first player to win, she may either win without a deuce or after a deuce.
     Without a deuce, (player-1, player-2) may score: {(4,2), (4, 1), (4,0)}
     With a deuce, the possible outcomes are: player-1 wins next two points or player-1 wins after another deuce.
     Assuming the notation for the binomial probability as P(n,k,p):
         P(first to deliver wins) = Sum( P(winning on the last point after n points) for n in {3,4,5} )
-                                 + Sum( P(deuce) * P(winning after deuce) )
+                                 + P(deuce) * P(winning after deuce)
             P(winning after deuce) = P(winning next two points) + P(winning from a subsequent deuce)
             P(winning after deuce) = p^2 + P(2,1,p) * P(winning after deuce)
             P(winning after deuce) = p^2 / (1-P(2,1,p))
         P(first to deliver wins) = Sum( P(n,3,p) * p for n in {3,4,5} )
-                                 + P(deuce) * P(winning after deuce)
+                                 + 20 * p^3 * (1-p)^3 * p^2 / (1-P(2,1,p))
 #### c. script
     cf. tennis.go
 
