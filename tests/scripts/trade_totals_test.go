@@ -1,7 +1,7 @@
 package tests
 
 import (
-	. "github.com/mtsraposo/xp-strats/scripts"
+	. "github.com/mtsraposo/golang-scripts/scripts"
 	"testing"
 	"time"
 )

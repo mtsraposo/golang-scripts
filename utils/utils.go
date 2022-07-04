@@ -1,8 +1,8 @@
 package utils
 
 import (
-	. "github.com/mtsraposo/xp-strats/maths"
-	. "github.com/mtsraposo/xp-strats/scripts"
+	. "github.com/mtsraposo/golang-scripts/maths"
+	. "github.com/mtsraposo/golang-scripts/scripts"
 	"time"
 )
 

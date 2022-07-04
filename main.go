@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/mtsraposo/xp-strats/maths"
+	. "github.com/mtsraposo/golang-scripts/maths"
 )
 
 func main() {

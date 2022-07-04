@@ -1,8 +1,8 @@
 package tests
 
 import (
-	. "github.com/mtsraposo/xp-strats/scripts"
-	. "github.com/mtsraposo/xp-strats/utils"
+	. "github.com/mtsraposo/golang-scripts/scripts"
+	. "github.com/mtsraposo/golang-scripts/utils"
 	"testing"
 )
 

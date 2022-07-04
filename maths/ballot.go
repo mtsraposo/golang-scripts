@@ -9,7 +9,7 @@ type BallotProb struct {
 }
 
 func RunBallot(red int, blue int) {
-	fmt.Printf("P(last ball removed is blue) = %f%%\n", ProbLastRemovedIsBlue(red, blue))
+	fmt.Printf("P(last ball removed is blue) = %f%%\n", 100*ProbLastRemovedIsBlue(red, blue))
 }
 
 func ProbLastRemovedIsBlue(red int, blue int) float64 {
