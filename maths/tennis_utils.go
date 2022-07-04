@@ -5,13 +5,8 @@ import (
 	"math/rand"
 )
 
-func whoWinsPoint(p float64) int {
-	outcome := rand.Float64()
-	if outcome < p {
-		return 1
-	} else {
-		return 2
-	}
+func playerOneWinsPoint(p float64) bool {
+	return rand.Float64() < p
 }
 
 func whoWinsGame(score [2]int) int {
@@ -21,30 +16,10 @@ func whoWinsGame(score [2]int) int {
 	if playerTwoWins := score[1] >= 4 && score[1]-score[0] >= 2; playerTwoWins {
 		return 2
 	}
+	if score[0]+score[1] >= MaxPoints {
+		return 3
+	}
 	return 0
-}
-
-func gameOver(score [2]int) bool {
-	winner := whoWinsGame(score)
-	tooManyPoints := score[0]+score[1] >= MaxPoints
-	if winner != 0 || tooManyPoints {
-		return true
-	}
-	return false
-}
-
-func firstWins(game *Node) bool {
-	var winner int
-	for node := game; node != nil; node = node.Next {
-		winner = whoWinsGame(node.Score)
-		if winner == 1 {
-			return true
-		}
-		if winner == 2 {
-			return false
-		}
-	}
-	return false
 }
 
 func BinomialProb(n int, k int, p float64) float64 {

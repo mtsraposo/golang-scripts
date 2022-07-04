@@ -2,43 +2,25 @@ package tests
 
 import (
 	. "github.com/mtsraposo/golang-scripts/maths"
-	. "github.com/mtsraposo/golang-scripts/utils"
 	"testing"
 )
 
 func TestGameProbs(t *testing.T) {
 	tests := []struct {
-		games     [][][2]int
-		deuceProb float64
+		p float64
+		n int
 		winProb   float64
+		deuceProb float64
 	}{
-		{
-			[][][2]int{
-				{
-					{0, 0}, {1, 0}, {1, 1}, {2, 1},
-					{2, 2}, {2, 3}, {3, 3}, {4, 3},
-					{4, 4}, {5, 4}, {5, 5}, {6, 5},
-					{7, 5},
-				},
-				{
-					{0, 0}, {1, 0}, {1, 1}, {2, 1},
-					{2, 2}, {2, 3}, {3, 3}, {4, 4},
-					{3, 5},
-				},
-			},
-			1.0, 0.5,
-		},
+		{0.7,1e6, 0.900108, 0.185171},
 	}
 	for _, test := range tests {
-		var games []*Node
-		for _,game := range test.games {
-			games = append(games, ArrayToLinkedList(game))
-		}
-		deuceProb, winProb := Probs(games)
+		winProb, deuceProb := SimulateGames(test.p, test.n)
 		if deuceProb != test.deuceProb || winProb != test.winProb {
-			t.Errorf("Failed to calculate probabilities. (deuceProb=%f, winProb=%f) does not equal (deuceProb=%f, winProb=%f)",
-				deuceProb, winProb, test.deuceProb, test.winProb)
+			t.Errorf("Failed to calculate probabilities. (winProb=%f, deuceProb=%f) does not equal (winProb=%f, deuceProb=%f)",
+				winProb, deuceProb, test.winProb, test.deuceProb)
+		} else {
+			t.Logf("Probs(%f, %d) = (%f, %f)", test.p, test.n, winProb, deuceProb)
 		}
-		t.Logf("Probs(%v) = (%f, %f)", test.games, deuceProb, winProb)
 	}
 }
