@@ -85,3 +85,4 @@
     will be blue given a number of "i" red balls and "j" blues balls in the box.
     The result will be at position (reds, blues) of the matrix, at which point we may
     stop iterating.
+    Please refer to ballot.go for the implementation.
