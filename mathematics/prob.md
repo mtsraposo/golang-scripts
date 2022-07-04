@@ -31,6 +31,29 @@
         P(first to deliver wins) = Sum( P(n,3,p) * p for n in {3,4,5} )
                                  + P(deuce) * P(winning after deuce)
 #### c. script
-    cf. prob.go
+    cf. tennis.go
 
 ### 5. Ballot box
+    There are three transitions to consider: 
+        (i) when the game is "reset", ie the first ball of a sequence has not been drawn yet, 
+        (ii) when the previous ball drawn was blue
+        (iii) when the previous ball drawn was red
+    For (i), the probability that the last ball will be blue may be defined as,
+    assuming "i" red balls and "j" blue balls:
+        P(i,j) = P(red) * P(i-1,j | R) + P(blue) * P(i, j-1 | B), 
+            where P(i,j | C) denotes the conditional probability that 
+            the last ball will be blue given that the previous ball was of color C
+        P(i,j) = i / (i+j) * P(i-1,j | R) + j / (i+j) * P(i, j-1 | B)
+    The conditional probabilities (ii) and (iii) are calculated similarly:
+        P(i,j | B) = i / (i+j) * P(i,j) + j / (i+j) * P(i, j-1 | B)
+        P(i,j | R) = i / (i+j) * P(i-1,j | R) + j / (i+j) * P(i, j),
+            the P(i, j) terms indicating the cases where 
+            a different ball is drawn and the game is reset
+    With the boundary conditions:
+        P(i,1) = 0, for i in [1, reds]
+        P(1,j) = 1, for j in (1, blues]
+    Starting from P(1,2) and moving either horizontally or vertically, 
+    we can build a matrix of all possible probabilities that the last ball
+    will be blue given a number of "i" red balls and "j" blues balls in the box.
+    The result will be at position (reds, blues) of the matrix, at which point we may
+    stop iterating.
