@@ -6,9 +6,9 @@ make
 ```
 
 This will build a docker image for the scripts and tests, will run all tests and print logs.
-The `make run` and `make build` commands are also available.
+The `make run` and `make build` commands are also available separately.
 
-To install Go, go to the official <a href=https://go.dev/doc/install>website</a>.
+To install Go, please refer to the official <a href=https://go.dev/doc/install>website</a>.
 
 ## Programming
 - [X] List rotations
