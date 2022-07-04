@@ -45,8 +45,9 @@ func TestTradePositions(t *testing.T) {
 		if !PositionsEqual(positions, test.positions) {
 			t.Errorf("Failed to calculate positions for %v. %v does not equal %v",
 				test.trades, positions, test.positions)
+		} else {
+			t.Logf("TradePositions(%v,%s) = %v", FormatTrades(test.trades), FormatDate(test.date), positions)
 		}
-		t.Logf("TradePositions(%v,%s) = %v", FormatTrades(test.trades), FormatDate(test.date), positions)
 	}
 
 }

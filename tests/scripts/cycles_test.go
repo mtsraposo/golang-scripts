@@ -22,7 +22,8 @@ func TestCycles(t *testing.T) {
 		if !MatricesEqual(cycles, test.cycles) {
 			t.Errorf("failed to identify permutation cycles in %v. %v does not equal %v",
 				test.set, cycles, test.cycles)
+		} else {
+			t.Logf("PermutationCycles(%v) = %v", test.set, cycles)
 		}
-		t.Logf("PermutationCycles(%v) = %v", test.set, cycles)
 	}
 }

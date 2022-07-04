@@ -20,7 +20,8 @@ func TestMaxMinBreaches(t *testing.T) {
 		if maxMinBreaches[0] != test.maxMinBreaches[0] || maxMinBreaches[1] != test.maxMinBreaches[1] {
 			t.Errorf("failed to calculate maxMinBreaches for prices %v. %v did not equal %v",
 				test.prices, maxMinBreaches, test.maxMinBreaches)
+		} else {
+			t.Logf("CalcMaxMinBreaches(%v) = %v", test.prices, maxMinBreaches)
 		}
-		t.Logf("CalcMaxMinBreaches(%v) = %v", test.prices, maxMinBreaches)
 	}
 }

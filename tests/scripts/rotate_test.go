@@ -24,7 +24,8 @@ func TestRotate(t *testing.T) {
 		rotated := Rotate(test.L, test.k)
 		if !ArraysEqual(rotated, test.R) {
 			t.Errorf("Rotation of (%v, %d) failed. %v does not equal %v.", test.L, test.k, rotated, test.R)
+		} else {
+			t.Logf("Rotate(%v, %d) = %v", test.L, test.k, rotated)
 		}
-		t.Logf("Rotate(%v, %d) = %v", test.L, test.k, rotated)
 	}
 }

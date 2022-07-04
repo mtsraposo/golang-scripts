@@ -20,7 +20,8 @@ func TestUnion(t *testing.T) {
 		union := Union(test.intervals)
 		if !MatricesEqual(union, test.union) {
 			t.Errorf("Failed to mergeSort intervals %v. %v does not equal %v", test.intervals, union, test.union)
+		} else {
+			t.Logf("Union(%v) = %v", test.intervals, union)
 		}
-		t.Logf("Union(%v) = %v", test.intervals, union)
 	}
 }

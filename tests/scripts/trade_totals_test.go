@@ -2,6 +2,7 @@ package tests
 
 import (
 	. "github.com/mtsraposo/golang-scripts/scripts"
+	. "github.com/mtsraposo/golang-scripts/utils"
 	"testing"
 	"time"
 )
@@ -24,8 +25,9 @@ func TestTradeTotals(t *testing.T) {
 		if !totalsAreEqual(net, test.net) {
 			t.Errorf("Failed to calculate net trade amounts for trades %v. %v does not equal %v",
 				test.trades, net, test.net)
+		} else {
+			t.Logf("TradeSummary(%v) = %v", FormatTrades(test.trades), net)
 		}
-		t.Logf("TradeSummary(%v) = %v", test.trades, net)
 	}
 }
 
