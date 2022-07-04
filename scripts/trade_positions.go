@@ -19,29 +19,29 @@ type DatePosition struct {
 
 func TradePositions(trades []Trade, date time.Time) []Position {
 	dateToPositions := groupByInstrument(trades)
-	positions := mapToArray(dateToPositions)
-	sortByDate(positions)
-	dateToPositions = accumulate(positions)
-	positionsOnDate := getByDate(dateToPositions, date)
-	return mapPositionsToArray(positionsOnDate)
+	datePositions := mapToArray(dateToPositions)
+	sortByDate(datePositions)
+	dateToPositionsCumulative := accumulate(datePositions)
+	cumulativePositionsOnDate := getByDate(dateToPositionsCumulative, date)
+	return mapSingleDatePositionsToArray(cumulativePositionsOnDate)
 }
 
 func groupByInstrument(trades []Trade) DateToPosition {
-	dateToPosition := make(DateToPosition)
+	dateToPositions := make(DateToPosition)
 	for _, trade := range trades {
 		date := extractDate(trade)
 		side := -1 * extractSideMultiplier(trade)
-		if _, dateExists := dateToPosition[date]; dateExists {
-			if _, positionExists := dateToPosition[date][trade.Instrument]; positionExists {
-				dateToPosition[date][trade.Instrument] += trade.Quantity * side
+		if _, dateExists := dateToPositions[date]; dateExists {
+			if _, positionExists := dateToPositions[date][trade.Instrument]; positionExists {
+				dateToPositions[date][trade.Instrument] += trade.Quantity * side
 			} else {
-				dateToPosition[date][trade.Instrument] = trade.Quantity * side
+				dateToPositions[date][trade.Instrument] = trade.Quantity * side
 			}
 		} else {
-			dateToPosition[date] = map[string]int{trade.Instrument: trade.Quantity * side}
+			dateToPositions[date] = map[string]int{trade.Instrument: trade.Quantity * side}
 		}
 	}
-	return dateToPosition
+	return dateToPositions
 }
 
 func mapToArray(toConvert DateToPosition) []DatePosition {
@@ -59,17 +59,17 @@ func sortByDate(positions []DatePosition) {
 }
 
 func accumulate(positions []DatePosition) DateToPosition {
-	cumulativePositions := make(DateToPosition)
-	cumulativePositions[positions[0].Date] = positions[0].Positions
+	dateToPositionsCumulative := make(DateToPosition)
+	dateToPositionsCumulative[positions[0].Date] = positions[0].Positions
 
 	previous := positions[0].Positions
 	for _, date := range positions[1:] {
 		current := getCurrentSum(date.Positions, previous)
-		cumulativePositions[date.Date] = current
+		dateToPositionsCumulative[date.Date] = current
 		previous = current
 		current = map[string]int{}
 	}
-	return cumulativePositions
+	return dateToPositionsCumulative
 }
 
 func getCurrentSum(positions map[string]int, previous map[string]int) map[string]int {
@@ -91,7 +91,7 @@ func getByDate(cumulativePositions DateToPosition, date time.Time) map[string]in
 	return cumulativePositions[date]
 }
 
-func mapPositionsToArray(positionsMap map[string]int) []Position {
+func mapSingleDatePositionsToArray(positionsMap map[string]int) []Position {
 	var positionsArray []Position
 	for position, total := range positionsMap {
 		positionsArray = append(positionsArray, Position{position, total})
