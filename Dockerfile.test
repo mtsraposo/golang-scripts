@@ -1,0 +1,12 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.18 AS build
+
+WORKDIR /app
+
+COPY go.sum go.mod ./
+RUN go install -v ./...
+
+COPY . ./
+
+CMD ["go", "test", "-v", "./..."]
