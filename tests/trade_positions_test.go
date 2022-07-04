@@ -2,9 +2,12 @@ package tests
 
 import (
 	. "github.com/mtsraposo/xp-strats/scripts"
+	. "github.com/mtsraposo/xp-strats/utils"
 	"testing"
 	"time"
 )
+
+const layoutISO = "2022-07-04"
 
 func TestTradePositions(t *testing.T) {
 	day := 24 * time.Hour
@@ -41,22 +44,11 @@ func TestTradePositions(t *testing.T) {
 	}
 	for _, test := range tests {
 		positions := TradePositions(test.trades, test.date)
-		if !positionsEqual(positions, test.positions) {
+		if !PositionsEqual(positions, test.positions) {
 			t.Errorf("Failed to calculate positions for %v. %v does not equal %v",
 				test.trades, positions, test.positions)
 		}
+		t.Logf("TradePositions(%v,%s) = %v", test.trades, test.date.Format(layoutISO), positions)
 	}
 
-}
-
-func positionsEqual(p1 []Position, p2 []Position) bool {
-	if len(p1) != len(p2) {
-		return false
-	}
-	for i, pos := range p2 {
-		if pos.Instrument != p2[i].Instrument || pos.Total != p2[i].Total {
-			return false
-		}
-	}
-	return true
 }

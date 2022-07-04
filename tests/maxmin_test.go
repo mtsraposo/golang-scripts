@@ -21,5 +21,6 @@ func TestMaxMinBreaches(t *testing.T) {
 			t.Errorf("failed to calculate maxMinBreaches for prices %v. %v did not equal %v",
 				test.prices, maxMinBreaches, test.maxMinBreaches)
 		}
+		t.Logf("CalcMaxMinBreaches(%v) = %v", test.prices, maxMinBreaches)
 	}
 }

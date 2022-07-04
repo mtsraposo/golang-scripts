@@ -2,7 +2,20 @@ package utils
 
 import (
 	. "github.com/mtsraposo/xp-strats/mathematics"
+	. "github.com/mtsraposo/xp-strats/scripts"
 )
+
+func PositionsEqual(p1 []Position, p2 []Position) bool {
+	if len(p1) != len(p2) {
+		return false
+	}
+	for i, pos := range p2 {
+		if pos.Instrument != p2[i].Instrument || pos.Total != p2[i].Total {
+			return false
+		}
+	}
+	return true
+}
 
 func ArraysEqual[V int | float64](A []V, B []V) bool {
 	if len(A) != len(B) {
@@ -78,4 +91,19 @@ func ArrayToLinkedList(scores [][2]int) *Node {
 		node = node.Next
 	}
 	return root
+}
+
+func LinkedListsToArrays(games []*Node) [][][2]int {
+	var gamesArray [][][2]int
+	var gameArray [][2]int
+	for _,game := range games {
+		node := game
+		gameArray = [][2]int{}
+		for node.Next != nil {
+			gameArray = append(gameArray, node.Score)
+			node = node.Next
+		}
+		gamesArray = append(gamesArray, gameArray)
+	}
+	return gamesArray
 }

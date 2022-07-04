@@ -30,5 +30,6 @@ func TestSimulateGames(t *testing.T) {
 		if !GamesEqual(games, test.games) {
 			t.Errorf("Simulated games do not equal for p = %f", test.p)
 		}
+		t.Logf("SimulateGames(%f, %d) = %v", test.p, test.n, LinkedListsToArrays(games))
 	}
 }

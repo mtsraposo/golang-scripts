@@ -25,6 +25,7 @@ func TestTradeTotals(t *testing.T) {
 			t.Errorf("Failed to calculate net trade amounts for trades %v. %v does not equal %v",
 				test.trades, net, test.net)
 		}
+		t.Logf("TradeSummary(%v) = %v", test.trades, net)
 	}
 }
 

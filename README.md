@@ -1,4 +1,14 @@
-# XP Strats
+# Golang Scripts
+
+To run the project in a Docker container (<a href=https://docs.docker.com/get-docker>installation</a>), run:
+```
+make
+```
+
+This will build a docker image for the scripts and tests, will run all tests and print logs.
+The `make run` and `make build` commands are also available.
+
+To install Go, go to the official <a href=https://go.dev/doc/install>website</a>.
 
 ## Programming
 - [X] List rotations
@@ -20,13 +30,13 @@
   - [X] Max score to be downgraded
 
 ### Probability
-- [ ] Two dice
-  - [ ] P(sum is odd)
-  - [ ] P(product is odd)
-  - [ ] P(sum <= 5)
-- [ ] Tennis
-  - [ ] P(deuce)
-  - [ ] P(first to deliver wins)
-  - [ ] Script
-- [ ] Ballot box
-  - [ ] P(last ball removed is blue)
+- [X] Two dice
+  - [X] P(sum is odd)
+  - [X] P(product is odd)
+  - [X] P(sum <= 5)
+- [X] Tennis
+  - [X] P(deuce)
+  - [X] P(first to deliver wins)
+  - [X] Script
+- [X] Ballot box
+  - [X] P(last ball removed is blue)

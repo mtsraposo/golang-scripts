@@ -23,6 +23,7 @@ func TestBinomialProb(t *testing.T) {
 			t.Errorf("Binomial probabilities do not match for (n=%d, k=%d, p=%f). %f does not equal %f",
 				test.n, test.k, test.p, binProb, test.binProb)
 		}
+		t.Logf("BinomialProb(%d, %d, %f) = %f", test.n, test.k, test.p, binProb)
 	}
 }
 
@@ -44,5 +45,6 @@ func TestFactorial(t *testing.T) {
 			t.Errorf("Factorials do not match for number %d. %d does not equal %d",
 				test.n, fact, test.fact)
 		}
+		t.Logf("BinomialProb(%d) = %d", test.n, fact)
 	}
 }

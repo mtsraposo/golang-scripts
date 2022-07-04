@@ -23,5 +23,6 @@ func TestCycles(t *testing.T) {
 			t.Errorf("failed to identify permutation cycles in %v. %v does not equal %v",
 				test.set, cycles, test.cycles)
 		}
+		t.Logf("PermutationCycles(%v) = %v", test.set, cycles)
 	}
 }
