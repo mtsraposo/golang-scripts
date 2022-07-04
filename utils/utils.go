@@ -1,8 +1,9 @@
 package utils
 
 import (
-	. "github.com/mtsraposo/xp-strats/mathematics"
+	. "github.com/mtsraposo/xp-strats/maths"
 	. "github.com/mtsraposo/xp-strats/scripts"
+	"time"
 )
 
 func PositionsEqual(p1 []Position, p2 []Position) bool {
@@ -96,7 +97,7 @@ func ArrayToLinkedList(scores [][2]int) *Node {
 func LinkedListsToArrays(games []*Node) [][][2]int {
 	var gamesArray [][][2]int
 	var gameArray [][2]int
-	for _,game := range games {
+	for _, game := range games {
 		node := game
 		gameArray = [][2]int{}
 		for node.Next != nil {
@@ -106,4 +107,34 @@ func LinkedListsToArrays(games []*Node) [][][2]int {
 		gamesArray = append(gamesArray, gameArray)
 	}
 	return gamesArray
+}
+
+type FormattedTrade struct {
+	TradeDate  string
+	Instrument string
+	SideIsBuy  bool
+	Quantity   int
+	Price      int
+}
+
+func FormatTrades(trades []Trade) []FormattedTrade {
+	var fmtTrades []FormattedTrade
+	var fmtTrade FormattedTrade
+	for _, trade := range trades {
+		fmtTrade = FormattedTrade{
+			FormatDate(trade.TradeDate),
+			trade.Instrument,
+			trade.SideIsBuy,
+			trade.Quantity,
+			trade.Price,
+		}
+		fmtTrades = append(fmtTrades, fmtTrade)
+	}
+	return fmtTrades
+}
+
+const layoutISO = "2006-01-02"
+
+func FormatDate(date time.Time) string {
+	return date.Format(layoutISO)
 }

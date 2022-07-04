@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// Trade Using int for monetary calculations to avoid rounding errors
+// Trade A scale of precision (e.g. 1e6) may be used for conversion.
 type Trade struct {
 	TradeDate  time.Time
 	Instrument string
@@ -17,8 +19,6 @@ type Net struct {
 	Date  time.Time
 	Total int
 }
-
-const PRECISION = 1e6
 
 func TradeSummary(trades []Trade) []Net {
 	dateToTotal := mapDateToTotal(trades)

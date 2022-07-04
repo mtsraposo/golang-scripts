@@ -1,9 +1,15 @@
-package mathematics
+package maths
+
+import "fmt"
 
 type BallotProb struct {
 	fromBlue float64
 	fromRed  float64
 	total    float64
+}
+
+func RunBallot(red int, blue int) {
+	fmt.Printf("P(last ball removed is blue) = %f%%\n", ProbLastRemovedIsBlue(red, blue))
 }
 
 func ProbLastRemovedIsBlue(red int, blue int) float64 {

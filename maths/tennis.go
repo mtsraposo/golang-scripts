@@ -1,4 +1,4 @@
-package mathematics
+package maths
 
 import (
 	"fmt"
@@ -13,8 +13,7 @@ type Node struct {
 const MaxPoints = 1e2
 const GamesToPlay = 1e6
 
-func main() {
-	p := 0.7
+func RunTennis(p float64) {
 	games := SimulateGames(p, GamesToPlay)
 	deuceProb, firstWinsProb := Probs(games)
 	fmt.Printf("Probability of a Deuce: %f%% (vs. %f%% theoretical)\n", 100*deuceProb, 100*TheoreticalDeuceProb(p))

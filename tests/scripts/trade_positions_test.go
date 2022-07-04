@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-const layoutISO = "2022-07-04"
-
 func TestTradePositions(t *testing.T) {
 	day := 24 * time.Hour
 	refDate := time.Date(2022, 7, 6, 0, 0, 0, 0, time.UTC)
@@ -48,7 +46,7 @@ func TestTradePositions(t *testing.T) {
 			t.Errorf("Failed to calculate positions for %v. %v does not equal %v",
 				test.trades, positions, test.positions)
 		}
-		t.Logf("TradePositions(%v,%s) = %v", test.trades, test.date.Format(layoutISO), positions)
+		t.Logf("TradePositions(%v,%s) = %v", FormatTrades(test.trades), FormatDate(test.date), positions)
 	}
 
 }

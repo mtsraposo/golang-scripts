@@ -1,7 +1,7 @@
 package tests
 
 import (
-	. "github.com/mtsraposo/xp-strats/mathematics"
+	. "github.com/mtsraposo/xp-strats/maths"
 	"testing"
 )
 
