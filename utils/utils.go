@@ -1,21 +1,9 @@
 package utils
 
 import (
-	. "github.com/mtsraposo/golang-scripts/scripts"
+	"errors"
 	"time"
 )
-
-func PositionsEqual(p1 []Position, p2 []Position) bool {
-	if len(p1) != len(p2) {
-		return false
-	}
-	for i, pos := range p2 {
-		if pos.Instrument != p2[i].Instrument || pos.Total != p2[i].Total {
-			return false
-		}
-	}
-	return true
-}
 
 func ArraysEqual[V int | float64](A []V, B []V) bool {
 	if len(A) != len(B) {
@@ -43,6 +31,15 @@ func MatricesEqual[V int | float64](A [][]V, B [][]V) bool {
 	return true
 }
 
+func IndexOf[T string | int](toFind T, arr []T) int {
+	for i, elem := range arr {
+		if elem == toFind {
+			return i
+		}
+	}
+	panic(errors.New("element not found"))
+}
+
 type FormattedTrade struct {
 	TradeDate  string
 	Instrument string
@@ -51,24 +48,14 @@ type FormattedTrade struct {
 	Price      int
 }
 
-func FormatTrades(trades []Trade) []FormattedTrade {
-	var fmtTrades []FormattedTrade
-	var fmtTrade FormattedTrade
-	for _, trade := range trades {
-		fmtTrade = FormattedTrade{
-			FormatDate(trade.TradeDate),
-			trade.Instrument,
-			trade.SideIsBuy,
-			trade.Quantity,
-			trade.Price,
-		}
-		fmtTrades = append(fmtTrades, fmtTrade)
-	}
-	return fmtTrades
-}
-
-const layoutISO = "2006-01-02"
+const LayoutISO = "2006-01-02"
 
 func FormatDate(date time.Time) string {
-	return date.Format(layoutISO)
+	return date.Format(LayoutISO)
+}
+
+func Must(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
